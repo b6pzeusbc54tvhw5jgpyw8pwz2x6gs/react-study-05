@@ -1,14 +1,18 @@
 import {Header} from './components/Header'
+import {Category} from './components/Category'
 import {Content} from './components/Content'
-import { Flex } from '@chakra-ui/layout'
+import React from 'react'
 
-function App() {
-  return (
-    <Flex direction="column" alignItems="stretch" minH="100vh">
-      <Header/>
-      <Content/>
-    </Flex>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Header/>
+        <Category/>
+        <Content/>
+      </div>
+    )
+  }
 }
 
 export default App;
