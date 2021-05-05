@@ -4,12 +4,18 @@ import {Content} from './components/Content'
 import React from 'react'
 
 class App extends React.Component {
+  state = {
+    selectedCategory: 'lipstick',
+  }
+  updateSelectedCategory = (selectedCategory) => {
+    this.setState({ selectedCategory })
+  }
   render() {
     return (
       <div>
         <Header/>
-        <Category/>
-        <Content/>
+        <Category selectCategory={this.state.selectedCategory} updateSelectedCategory={this.updateSelectedCategory}/>
+        <Content selectedCategory={this.state.selectedCategory}/>
       </div>
     )
   }
