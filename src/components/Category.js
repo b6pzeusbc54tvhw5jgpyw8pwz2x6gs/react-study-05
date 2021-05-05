@@ -17,6 +17,7 @@ const cssSelected = css`
 export class Category extends React.Component {
   state = {
     categories: [],
+    selected: '',
     loading: false,
   }
   componentDidMount() {
@@ -28,24 +29,25 @@ export class Category extends React.Component {
   }
 
   selectCategory = (selected) => {
+    this.setState({ selected })
     this.props.updateSelectedCategory(selected)
   }
 
   render() {
     return (
-      <Flex bg="yellow.100" p={2} overflow="scroll">
-        {this.state.loading && <Text>loading...</Text>}
-        {this.state.categories.map(c => (
-          <Box
-            css={[cssCategory, this.props.selectCategory === c && cssSelected]}
-            key={c}
-            onClick={() => this.selectCategory(c)}
-            mr={3}
-          >
-            {c}
-          </Box>
-        ))}
-      </Flex>
+        <Flex bg="yellow.100" p={2} overflow="scroll">
+          {this.state.loading && <Text>loading...</Text>}
+          {this.state.categories.map(c => (
+            <Box
+              css={[cssCategory, this.state.selected === c && cssSelected]}
+              key={c}
+              onClick={() => this.selectCategory(c)}
+              mr={3}
+            >
+              {c}
+            </Box>
+          ))}
+        </Flex>
     )
   }
 }
